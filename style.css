@@ -7,6 +7,7 @@
     --text-color: #ffffff;
     --font-family: 'Noto Sans KR', sans-serif;
     --font-size: 6vw;
+    --bg9-color: rgba(255, 255, 255, 0.08); /* 배경 9 색상 (기본: 다크모드용) */
 }
 
 /* 다크 모드 변수 */
@@ -17,7 +18,29 @@
         --bg-color3: #4d0066;
         --bg-color4: #2e0044;
         --text-color: #f0f0f0;
+        --bg9-color: rgba(255, 255, 255, 0.08); /* 다크 모드 9 색상 */
     }
+}
+
+/* 라이트 모드 변수 */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color1: #fbc2eb; /* 라이트 모드 배경 예시 */
+        --bg-color2: #a6c1ee;
+        --bg-color3: #84fab0;
+        --bg-color4: #8fd3f4;
+        --text-color: #2c3e50; /* 라이트 모드 텍스트 색상 */
+        --bg9-color: rgba(0, 0, 0, 0.05); /* 라이트 모드 9 색상 */
+    }
+}
+
+
+/* box-sizing 적용 */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 /* 기본 스타일 */
@@ -25,16 +48,33 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: 100%; /* 100svh 대신 100% 사용 (JS 안쓸 경우 이게 더 안정적일 수 있음) */
     overflow: hidden;
     font-family: var(--font-family);
 }
 
 body {
     background: linear-gradient(45deg, var(--bg-color1), var(--bg-color2), var(--bg-color3), var(--bg-color4));
-    background-size: 300% 300%; /* 배경 크기를 늘려 움직임 폭 확대 */
-    animation: gradientBG 8s ease infinite; /* 애니메이션 속도 약간 빠르게 조정 */
+    background-size: 300% 300%;
+    animation: gradientBG 8s ease infinite;
     position: relative;
+}
+
+/* 배경 '9' 스타일 */
+body::before {
+    content: '9';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 95vh; /* 화면 높이에 맞춰 크기 조절 */
+    font-weight: 900;
+    color: var(--bg9-color); /* 변수 사용 */
+    z-index: 0; /* 로고보다 뒤에 위치 */
+    font-family: var(--font-family);
+    line-height: 1;
+    pointer-events: none; /* 클릭/터치 이벤트 무시 */
+    transition: color 0.5s ease; /* 테마 변경 시 부드럽게 */
 }
 
 /* 배경 애니메이션 */
@@ -56,6 +96,7 @@ body {
     color: var(--text-color);
     text-align: center;
     transition: all 0.5s ease;
+    z-index: 1; /* 배경 '9' 보다 위에 위치 */
 }
 
 .container h1 {
@@ -63,6 +104,7 @@ body {
     font-size: var(--font-size);
     white-space: nowrap;
     letter-spacing: -0.04em;
+    line-height: 1.2; /* 기본 줄 간격 */
 }
 
 .container h1 strong {
@@ -73,19 +115,35 @@ body {
     font-weight: 300;
 }
 
-/* 데스크탑 */
+/* 데스크탑 (기본) */
 .container {
     top: 50%;
     left: 80%;
     transform: translate(-50%, -50%);
+    text-align: center; /* 데스크탑은 중앙 정렬 */
 }
 
-/* 모바일 */
+/* 모바일 (768px 이하) */
 @media (max-width: 768px) {
-    .container {
-        left: 50%;
-    }
     :root {
-         --font-size: 10vw;
+         --font-size: 12vw; /* 모바일 폰트 크기 조정 */
+    }
+    .container {
+        top: 5vh; /* 상단 여백 */
+        right: 5vw; /* 우측 여백 */
+        left: auto; /* left 초기화 */
+        transform: translate(0, 0); /* transform 초기화 */
+        text-align: right; /* 우측 정렬 */
+    }
+
+    .container h1 {
+        line-height: 0.85; /* 줄 간격 좁게 */
+        white-space: normal; /* 줄 나눔 허용 */
+        letter-spacing: 0; /* 자간 초기화 */
+    }
+
+    .container h1 strong,
+    .container h1 span {
+        display: block; /* 줄 나눔 적용 */
     }
 }
