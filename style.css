@@ -58,7 +58,7 @@ body::before {
     content: '9';
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 5%;
     transform: translate(5%, -30%);
     font-size: 90vh;
     font-weight: 400;
