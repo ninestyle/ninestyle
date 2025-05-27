@@ -1,23 +1,25 @@
 /* 기본 & 라이트 모드 변수 */
 :root {
-    --bg-start: #fbc2eb;
-    --bg-mid1: #a6c1ee;
-    --bg-mid2: #84fab0;
-    --bg-end: #8fd3f4;
-    --text-color: #2c3e50;
+    --bg-start: #38006b; /* 아주 진한 보라색 시작 */
+    --bg-mid: #5e008c;   /* 중간 보라색 */
+    --bg-end: #8a00ac;   /* 끝나는 보라색 */
+    --text-color: #ffffff;
+    --font-family: 'Noto Sans KR', sans-serif; /* 웹 폰트 (Noto Sans KR) */
     --font-size: 6vw; /* 뷰포트 너비에 따라 폰트 크기 조절 */
 }
 
-/* 다크 모드 변수 */
+/* 다크 모드 변수 (기본 색상과 대비되도록 설정) */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-start: #0f2027;
-        --bg-mid1: #203a43;
-        --bg-mid2: #2c5364;
-        --bg-end: #1a2a6c;
-        --text-color: #ecf0f1;
+        --bg-start: #1a0035;
+        --bg-mid: #2e0044;
+        --bg-end: #450059;
+        --text-color: #f0f0f0;
     }
 }
+
+/* Noto Sans KR 웹 폰트 CDN 연결 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;700;900&display=swap');
 
 /* 기본 스타일 */
 html, body {
@@ -26,18 +28,18 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden; /* 스크롤바 제거 */
-    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; /* NINE STYLE 폰트가 없다면 기본 폰트 사용 */
+    font-family: var(--font-family); /* 적용된 웹 폰트 사용 */
 }
 
 body {
-    background: linear-gradient(-45deg, var(--bg-start), var(--bg-mid1), var(--bg-mid2), var(--bg-end));
-    background-size: 400% 400%; /* 애니메이션을 위한 배경 크기 확장 */
+    background: linear-gradient(-45deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+    background-size: 200% 200%; /* 이전보다 약간 완만한 애니메이션을 위해 크기 조정 */
     animation: gradientBG 15s ease infinite; /* 배경 애니메이션 적용 */
     display: flex; /* Flexbox를 사용하지 않고 Position으로 처리 */
     position: relative; /* 자식 요소의 position 기준점 */
 }
 
-/* 배경 애니메이션 */
+/* 배경 애니메이션 (색상 변화가 더 부드럽게 느껴지도록 수정) */
 @keyframes gradientBG {
     0% {
         background-position: 0% 50%;
@@ -61,16 +63,22 @@ body {
 .container h1 {
     margin: 0;
     font-size: var(--font-size);
-    font-weight: 900; /* 굵게 표시 */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
     white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 }
 
-/* 데스크탑 (기본) - 우 80%, 상하 50% */
+.container h1 strong {
+    font-weight: 900; /* "NINE"을 굵게 */
+}
+
+.container h1 span {
+    font-weight: 300; /* "STYLE"을 얇게 */
+}
+
+/* 데스크탑 (기본) - 우측 여백 적용 */
 .container {
     top: 50%;
-    left: 80%;
-    transform: translate(-50%, -50%); /* X축으로 -50%, Y축으로 -50% 이동하여 중앙 정렬 */
+    left: 85%; /* 기존 80%에서 우측으로 5% 이동하여 여백 확보 */
+    transform: translate(-50%, -50%);
 }
 
 /* 모바일 (가로 폭 768px 이하) - 상하좌우 50% */
