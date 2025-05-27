@@ -1,9 +1,16 @@
+/* ::: 시각적 디버깅용 테두리 (나중에 삭제) ::: */
+html { outline: 1px solid red; }
+body { outline: 1px solid blue; }
+.container { outline: 1px solid green; }
+h1 { outline: 1px solid yellow; }
+/* ::: 시각적 디버깅용 테두리 끝 ::: */
+
 /* 기본 & 라이트 모드 변수 */
 :root {
-    --bg-color1: #38006b; /* 아주 진한 보라색 */
-    --bg-color2: #5e008c; /* 중간 보라색 */
-    --bg-color3: #9c00c9; /* 밝은 보라색 추가 */
-    --bg-color4: #5e008c; /* 중간 보라색으로 돌아옴 */
+    --bg-color1: #38006b;
+    --bg-color2: #5e008c;
+    --bg-color3: #9c00c9;
+    --bg-color4: #5e008c;
     --text-color: #ffffff;
     --font-family: 'Noto Sans KR', sans-serif;
     --font-size: 6vw;
@@ -20,21 +27,31 @@
     }
 }
 
+/* box-sizing 적용 */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 /* 기본 스타일 */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: 100svh;
     overflow: hidden;
     font-family: var(--font-family);
 }
 
 body {
     background: linear-gradient(45deg, var(--bg-color1), var(--bg-color2), var(--bg-color3), var(--bg-color4));
-    background-size: 300% 300%; /* 배경 크기를 늘려 움직임 폭 확대 */
-    animation: gradientBG 8s ease infinite; /* 애니메이션 속도 약간 빠르게 조정 */
+    background-size: 300% 300%;
+    animation: gradientBG 8s ease infinite;
     position: relative;
+    display: grid; /* Flex 대신 Grid 사용 */
+    place-items: center; /* Grid에서 가로/세로 중앙 정렬 */
 }
 
 /* 배경 애니메이션 */
@@ -52,17 +69,19 @@ body {
 
 /* 텍스트 컨테이너 */
 .container {
-    position: absolute;
     color: var(--text-color);
     text-align: center;
     transition: all 0.5s ease;
+    /* Grid 아이템이므로 position/transform 불필요 */
 }
 
 .container h1 {
     margin: 0;
+    padding: 0;
     font-size: var(--font-size);
     white-space: nowrap;
     letter-spacing: -0.04em;
+    line-height: 1;
 }
 
 .container h1 strong {
@@ -73,19 +92,31 @@ body {
     font-weight: 300;
 }
 
-/* 데스크탑 */
-.container {
-    top: 50%;
-    left: 80%;
-    transform: translate(-50%, -50%);
+/* 데스크탑 (769px 이상) */
+@media (min-width: 769px) {
+    body {
+        display: block; /* Grid 해제, 기본 블록으로 변경 */
+        /* place-items 초기화 불필요 */
+    }
+    .container {
+        position: absolute; /* 데스크탑에서는 다시 absolute 사용 */
+        top: 50%;
+        left: 80%;
+        transform: translate(-50%, -50%);
+    }
 }
 
-/* 모바일 */
+/* 모바일 (768px 이하) */
 @media (max-width: 768px) {
-    .container {
-        left: 50%;
-    }
     :root {
          --font-size: 10vw;
+    }
+    .container {
+        position: static; /* position 해제 */
+        transform: none; /* transform 해제 */
+    }
+    body {
+        display: grid; /* 모바일에서는 Grid 유지 */
+        place-items: center;
     }
 }
