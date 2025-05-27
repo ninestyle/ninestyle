@@ -67,7 +67,7 @@ body::before {
     left: 50%;
     transform: translate(-50%, -53%); /* Y축 -53%로 수정하여 위로 이동 */
     font-size: 95vh;
-    font-weight: 100; /* 900에서 100으로 수정하여 얇게 */
+    font-weight: 500; /* 900에서 100으로 수정하여 얇게 */
     color: var(--bg9-color);
     z-index: 0;
     font-family: var(--font-family);
