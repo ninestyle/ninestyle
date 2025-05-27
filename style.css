@@ -5,7 +5,7 @@
     --bg-color3: #9c00c9;
     --bg-color4: #5e008c;
     --text-color: #ffffff;
-    --font-family: 'Roboto', sans-serif; /* Noto Sans KR 대신 Roboto 적용 */
+    --font-family: 'Lato', sans-serif; /* Roboto 대신 Lato 적용 */
     --font-size: 6vw;
     --bg9-color: rgba(255, 255, 255, 0.08);
 }
@@ -49,7 +49,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: var(--font-family); /* Roboto 폰트 적용 */
+    font-family: var(--font-family); /* Lato 폰트 적용 */
 }
 
 body {
@@ -65,12 +65,12 @@ body::before {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 100vh;
-    font-weight: 500;
+    transform: translate(-50%, -50%); /* 사용자님 코드로 복구 */
+    font-size: 100vh; /* 사용자님 코드로 복구 */
+    font-weight: 400; /* 500 대신 400(Regular) 적용 */
     color: var(--bg9-color);
     z-index: 0;
-    font-family: var(--font-family); /* Roboto 폰트 적용 */
+    font-family: var(--font-family); /* Lato 폰트 적용 */
     line-height: 1;
     pointer-events: none;
     transition: color 0.5s ease;
