@@ -1,0 +1,85 @@
+/* 기본 & 라이트 모드 변수 */
+:root {
+    --bg-start: #fbc2eb;
+    --bg-mid1: #a6c1ee;
+    --bg-mid2: #84fab0;
+    --bg-end: #8fd3f4;
+    --text-color: #2c3e50;
+    --font-size: 6vw; /* 뷰포트 너비에 따라 폰트 크기 조절 */
+}
+
+/* 다크 모드 변수 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-start: #0f2027;
+        --bg-mid1: #203a43;
+        --bg-mid2: #2c5364;
+        --bg-end: #1a2a6c;
+        --text-color: #ecf0f1;
+    }
+}
+
+/* 기본 스타일 */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* 스크롤바 제거 */
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; /* NINE STYLE 폰트가 없다면 기본 폰트 사용 */
+}
+
+body {
+    background: linear-gradient(-45deg, var(--bg-start), var(--bg-mid1), var(--bg-mid2), var(--bg-end));
+    background-size: 400% 400%; /* 애니메이션을 위한 배경 크기 확장 */
+    animation: gradientBG 15s ease infinite; /* 배경 애니메이션 적용 */
+    display: flex; /* Flexbox를 사용하지 않고 Position으로 처리 */
+    position: relative; /* 자식 요소의 position 기준점 */
+}
+
+/* 배경 애니메이션 */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 텍스트 컨테이너 */
+.container {
+    position: absolute;
+    color: var(--text-color);
+    text-align: center;
+    transition: all 0.5s ease; /* 위치 변경 시 부드러운 전환 효과 */
+}
+
+.container h1 {
+    margin: 0;
+    font-size: var(--font-size);
+    font-weight: 900; /* 굵게 표시 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+}
+
+/* 데스크탑 (기본) - 우 80%, 상하 50% */
+.container {
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%); /* X축으로 -50%, Y축으로 -50% 이동하여 중앙 정렬 */
+}
+
+/* 모바일 (가로 폭 768px 이하) - 상하좌우 50% */
+@media (max-width: 768px) {
+    .container {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    :root {
+         --font-size: 10vw; /* 모바일에서 폰트 크기 증가 */
+    }
+}
