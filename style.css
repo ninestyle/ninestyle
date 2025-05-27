@@ -1,63 +1,4 @@
-/* 기본 & 라이트 모드 변수 */
-:root {
-    --bg-color1: #38006b;
-    --bg-color2: #5e008c;
-    --bg-color3: #9c00c9;
-    --bg-color4: #5e008c;
-    --text-color: #ffffff;
-    --font-family: 'Lato', sans-serif; /* Roboto 대신 Lato 적용 */
-    --font-size: 6vw;
-    --bg9-color: rgba(255, 255, 255, 0.08);
-}
-
-/* 다크 모드 변수 */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color1: #1a0035;
-        --bg-color2: #2e0044;
-        --bg-color3: #4d0066;
-        --bg-color4: #2e0044;
-        --text-color: #f0f0f0;
-        --bg9-color: rgba(255, 255, 255, 0.08);
-    }
-}
-
-/* 라이트 모드 변수 */
-@media (prefers-color-scheme: light) {
-    :root {
-        --bg-color1: #fbc2eb;
-        --bg-color2: #a6c1ee;
-        --bg-color3: #84fab0;
-        --bg-color4: #8fd3f4;
-        --text-color: #2c3e50;
-        --bg9-color: rgba(0, 0, 0, 0.05);
-    }
-}
-
-/* box-sizing 적용 */
-html {
-    box-sizing: border-box;
-}
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
-/* 기본 스타일 */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: var(--font-family); /* Lato 폰트 적용 */
-}
-
-body {
-    background: linear-gradient(45deg, var(--bg-color1), var(--bg-color2), var(--bg-color3), var(--bg-color4));
-    background-size: 300% 300%;
-    animation: gradientBG 8s ease infinite;
-    position: relative;
-}
+/* ... (이전 CSS 코드와 동일) ... */
 
 /* 배경 '9' 스타일 */
 body::before {
@@ -65,76 +6,16 @@ body::before {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* 사용자님 코드로 복구 */
-    font-size: 100vh; /* 사용자님 코드로 복구 */
-    font-weight: 400; /* 500 대신 400(Regular) 적용 */
+    transform: translate(-50%, -50%);
+    font-size: 100vh;
+    font-weight: 400;
+    font-style: italic; /* 이탤릭 효과 추가 */
     color: var(--bg9-color);
     z-index: 0;
-    font-family: var(--font-family); /* Lato 폰트 적용 */
+    font-family: var(--font-family);
     line-height: 1;
     pointer-events: none;
     transition: color 0.5s ease;
 }
 
-/* 배경 애니메이션 */
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* 텍스트 컨테이너 */
-.container {
-    position: absolute;
-    color: var(--text-color);
-    text-align: center;
-    transition: all 0.5s ease;
-    z-index: 1;
-}
-
-.container h1 {
-    margin: 0;
-    font-size: var(--font-size);
-    white-space: nowrap;
-    letter-spacing: -0.04em;
-    line-height: 1.2;
-}
-
-.container h1 strong {
-    font-weight: 900;
-}
-
-.container h1 span {
-    font-weight: 300;
-}
-
-/* 데스크탑 (기본) */
-.container {
-    top: 50%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-/* 모바일 (768px 이하) */
-@media (max-width: 768px) {
-    :root {
-         --font-size: 12vw;
-    }
-    .container {
-        top: 5vh;
-        right: 5vw;
-        left: auto;
-        transform: translate(0, 0);
-        text-align: right;
-    }
-    .container h1 {
-        line-height: 0.85;
-        white-space: normal;
-        letter-spacing: 0;
-    }
-    .container h1 strong,
-    .container h1 span {
-        display: block;
-    }
-}
+/* ... (이후 CSS 코드와 동일) ... */
