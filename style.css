@@ -58,8 +58,8 @@ body::before {
     content: '9';
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-90%, -30%);
+    left: 0;
+    transform: translate(10%, -30%);
     font-size: 90vh;
     font-weight: 400;
     color: var(--bg9-color);
@@ -114,8 +114,8 @@ body::before {
          --font-size: 12vw;
     }
     body::before {
+        left: 50%;
         transform: translate(-50%, -30%);
-        font-size: 90vh;
     }
     .container {
         top: 5vh;
