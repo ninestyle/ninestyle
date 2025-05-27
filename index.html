@@ -10,13 +10,7 @@
     <meta name="author" content="Maxim">
     <meta name="keywords" content="Beauty, Spa, Salon">
     <meta name="description" content="Beauty Spa & Salon Agency">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;900&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
-    
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     
@@ -26,23 +20,5 @@
     <div class="container">
         <h1><strong>NINE</strong> <span>STYLE</span></h1>
     </div>
-
-    <script>
-        window.addEventListener('load', () => {
-            // 페이지 로딩 완료 후 0.15초 뒤에 실행 (다른 요소 로딩 시간 고려)
-            setTimeout(() => {
-                const body = document.body;
-                // 현재 화면 너비를 확인하여 모바일일 경우에만 실행 (선택 사항)
-                if (window.innerWidth <= 768) {
-                    // body의 투명도를 아주 약간 변경 (거의 티 안 남)
-                    body.style.opacity = '0.9999';
-                    // 다음 브라우저 렌더링 프레임에서 원래대로 복구
-                    requestAnimationFrame(() => {
-                        body.style.opacity = '1';
-                    });
-                }
-            }, 150); 
-        });
-    </script>
     </body>
 </html>
