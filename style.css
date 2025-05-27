@@ -62,7 +62,6 @@ body::before {
     transform: translate(-50%, -50%);
     font-size: 200vh;
     font-weight: 400;
-    font-style: italic;
     color: var(--bg9-color);
     z-index: 0;
     font-family: var(--font-family);
