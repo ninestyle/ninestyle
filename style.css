@@ -18,9 +18,6 @@
     }
 }
 
-/* Noto Sans KR 웹 폰트 CDN 연결 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;700;900&display=swap');
-
 /* 기본 스타일 */
 html, body {
     margin: 0;
