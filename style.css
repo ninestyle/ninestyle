@@ -1,9 +1,9 @@
 /* 기본 & 라이트 모드 변수 */
 :root {
-    --bg-color1: #38006b; /* 아주 진한 보라색 */
-    --bg-color2: #5e008c; /* 중간 보라색 */
-    --bg-color3: #9c00c9; /* 밝은 보라색 추가 */
-    --bg-color4: #5e008c; /* 중간 보라색으로 돌아옴 */
+    --bg-color1: #38006b;
+    --bg-color2: #5e008c;
+    --bg-color3: #9c00c9;
+    --bg-color4: #5e008c;
     --text-color: #ffffff;
     --font-family: 'Noto Sans KR', sans-serif;
     --font-size: 6vw;
@@ -25,16 +25,19 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: 100svh; /* 100vh 대신 100svh 사용 */
     overflow: hidden;
     font-family: var(--font-family);
 }
 
 body {
     background: linear-gradient(45deg, var(--bg-color1), var(--bg-color2), var(--bg-color3), var(--bg-color4));
-    background-size: 300% 300%; /* 배경 크기를 늘려 움직임 폭 확대 */
-    animation: gradientBG 8s ease infinite; /* 애니메이션 속도 약간 빠르게 조정 */
+    background-size: 300% 300%;
+    animation: gradientBG 8s ease infinite;
     position: relative;
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 모바일 가로 중앙 정렬 */
+    align-items: center; /* 모바일 세로 중앙 정렬 */
 }
 
 /* 배경 애니메이션 */
@@ -52,10 +55,10 @@ body {
 
 /* 텍스트 컨테이너 */
 .container {
-    position: absolute;
     color: var(--text-color);
     text-align: center;
     transition: all 0.5s ease;
+    /* 모바일에서는 position: static (기본값) */
 }
 
 .container h1 {
@@ -73,19 +76,23 @@ body {
     font-weight: 300;
 }
 
-/* 데스크탑 */
-.container {
-    top: 50%;
-    left: 80%;
-    transform: translate(-50%, -50%);
+/* 데스크탑 (769px 이상) */
+@media (min-width: 769px) {
+    .container {
+        position: absolute; /* 데스크탑에서는 position: absolute 사용 */
+        top: 50%;
+        left: 80%;
+        transform: translate(-50%, -50%);
+    }
 }
 
-/* 모바일 */
+/* 모바일 (768px 이하) */
 @media (max-width: 768px) {
-    .container {
-        left: 50%;
-    }
     :root {
          --font-size: 10vw;
+    }
+    .container {
+        position: static; /* 명시적으로 static 설정 (Flexbox 적용) */
+        transform: none; /* transform 해제 */
     }
 }
