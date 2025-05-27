@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/*
+	minimization version
+	Not compatible with the official version
+*/
+
+/* damso-footer */
+	#damso-footer{padding-bottom:50px}
+	#damso-footer address *{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;list-style:none;font-style:normal;text-transform:uppercase;}
+
+/* ul, p */
+	#damso-footer address p{margin-bottom:5px;font:12px tahoma;letter-spacing:0;color:#707070}
+	#damso-footer address p.duty{font-size:1em;font-family:inherit}
+	#damso-footer address p.symbol{margin-top:20px}
+
+/* symbol */
+	#damso-footer .damso-symbol-image{width:54px;height:12px;background-size:54px 12px;line-height:10px;background-image:url('/image/damso.symbol.png');background-repeat:no-repeat;background-position:50%;display:inline-block}
+
+/* mobile */
+	#damso.device-mobile #damso-footer .damso-symbol-image{background-image:url('/image/damso.symbol.mobile.png')}
+
+@media only screen and (-moz-min-device-pixel-ratio: 2),
+       only screen and (-o-min-device-pixel-ratio: 2/1),
+       only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min-device-pixel-ratio: 2) {
+#damso-footer .damso-symbol-image{background-image:url('/image/damso.symbol.mobile.png')}
+}
