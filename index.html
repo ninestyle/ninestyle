@@ -28,5 +28,18 @@
     <div class="container">
         <h1><strong>NINE</strong> <span>STYLE</span></h1>
     </div>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const body = document.body;
+                if (window.innerWidth <= 768 && getComputedStyle(body).display === 'grid') {
+                    body.style.opacity = '0.9999';
+                    requestAnimationFrame(() => {
+                        body.style.opacity = '1';
+                    });
+                }
+            }, 500);
+        });
+    </script>
 </body>
 </html>
