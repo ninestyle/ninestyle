@@ -5,7 +5,7 @@
     --bg-color3: #9c00c9;
     --bg-color4: #5e008c;
     --text-color: #ffffff;
-    --font-family: 'Noto Sans KR', sans-serif;
+    --font-family: 'Roboto', sans-serif; /* Noto Sans KR 대신 Roboto 적용 */
     --font-size: 6vw;
     --bg9-color: rgba(255, 255, 255, 0.08);
 }
@@ -49,7 +49,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: var(--font-family);
+    font-family: var(--font-family); /* Roboto 폰트 적용 */
 }
 
 body {
@@ -65,12 +65,12 @@ body::before {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -53%); /* Y축 -53%로 수정하여 위로 이동 */
+    transform: translate(-50%, -53%);
     font-size: 95vh;
-    font-weight: 500; /* 900에서 100으로 수정하여 얇게 */
+    font-weight: 500;
     color: var(--bg9-color);
     z-index: 0;
-    font-family: var(--font-family);
+    font-family: var(--font-family); /* Roboto 폰트 적용 */
     line-height: 1;
     pointer-events: none;
     transition: color 0.5s ease;
