@@ -1,19 +1,21 @@
 /* 기본 & 라이트 모드 변수 */
 :root {
-    --bg-start: #38006b; /* 아주 진한 보라색 시작 */
-    --bg-mid: #5e008c;   /* 중간 보라색 */
-    --bg-end: #8a00ac;   /* 끝나는 보라색 */
+    --bg-color1: #38006b; /* 아주 진한 보라색 */
+    --bg-color2: #5e008c; /* 중간 보라색 */
+    --bg-color3: #9c00c9; /* 밝은 보라색 추가 */
+    --bg-color4: #5e008c; /* 중간 보라색으로 돌아옴 */
     --text-color: #ffffff;
-    --font-family: 'Noto Sans KR', sans-serif; /* 웹 폰트 (Noto Sans KR) */
-    --font-size: 6vw; /* 뷰포트 너비에 따라 폰트 크기 조절 */
+    --font-family: 'Noto Sans KR', sans-serif;
+    --font-size: 6vw;
 }
 
-/* 다크 모드 변수 (기본 색상과 대비되도록 설정) */
+/* 다크 모드 변수 */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-start: #1a0035;
-        --bg-mid: #2e0044;
-        --bg-end: #450059;
+        --bg-color1: #1a0035;
+        --bg-color2: #2e0044;
+        --bg-color3: #4d0066;
+        --bg-color4: #2e0044;
         --text-color: #f0f0f0;
     }
 }
@@ -24,14 +26,14 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* 스크롤바 제거 */
-    font-family: var(--font-family); /* 적용된 웹 폰트 사용 */
+    overflow: hidden;
+    font-family: var(--font-family);
 }
 
 body {
-    background: linear-gradient(-45deg, var(--bg-start), var(--bg-mid), var(--bg-end));
-    background-size: 200% 200%;
-    animation: gradientBG 15s ease infinite;
+    background: linear-gradient(45deg, var(--bg-color1), var(--bg-color2), var(--bg-color3), var(--bg-color4));
+    background-size: 300% 300%; /* 배경 크기를 늘려 움직임 폭 확대 */
+    animation: gradientBG 8s ease infinite; /* 애니메이션 속도 약간 빠르게 조정 */
     position: relative;
 }
 
@@ -60,7 +62,7 @@ body {
     margin: 0;
     font-size: var(--font-size);
     white-space: nowrap;
-    letter-spacing: -0.04em; /* NINE과 STYLE 사이 간격 조절 (음수 값으로 좁힘) */
+    letter-spacing: -0.04em;
 }
 
 .container h1 strong {
@@ -71,14 +73,14 @@ body {
     font-weight: 300;
 }
 
-/* 데스크탑 (기본) - 우측 위치 80%로 조정 */
+/* 데스크탑 */
 .container {
     top: 50%;
-    left: 80%; /* 85%에서 80%로 수정 */
+    left: 80%;
     transform: translate(-50%, -50%);
 }
 
-/* 모바일 (가로 폭 768px 이하) - 상하좌우 50% */
+/* 모바일 */
 @media (max-width: 768px) {
     .container {
         left: 50%;
