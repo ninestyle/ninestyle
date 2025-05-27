@@ -1,3 +1,10 @@
+/* ::: 시각적 디버깅용 테두리 (나중에 삭제) ::: */
+html { outline: 1px solid red; }
+body { outline: 1px solid blue; }
+.container { outline: 1px solid green; }
+h1 { outline: 1px solid yellow; }
+/* ::: 시각적 디버깅용 테두리 끝 ::: */
+
 /* 기본 & 라이트 모드 변수 */
 :root {
     --bg-color1: #38006b;
@@ -20,12 +27,20 @@
     }
 }
 
+/* box-sizing 적용 */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 /* 기본 스타일 */
 html, body {
     margin: 0;
-    padding: 0;
+    padding: 0; /* 혹시 모를 패딩도 제거 */
     width: 100%;
-    height: 100svh; /* 100vh 대신 100svh 사용 */
+    height: 100svh;
     overflow: hidden;
     font-family: var(--font-family);
 }
@@ -35,9 +50,9 @@ body {
     background-size: 300% 300%;
     animation: gradientBG 8s ease infinite;
     position: relative;
-    display: flex; /* Flexbox 사용 */
-    justify-content: center; /* 모바일 가로 중앙 정렬 */
-    align-items: center; /* 모바일 세로 중앙 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 배경 애니메이션 */
@@ -58,14 +73,15 @@ body {
     color: var(--text-color);
     text-align: center;
     transition: all 0.5s ease;
-    /* 모바일에서는 position: static (기본값) */
 }
 
 .container h1 {
-    margin: 0;
+    margin: 0; /* 마진 0 재확인 */
+    padding: 0; /* 혹시 모를 패딩도 제거 */
     font-size: var(--font-size);
     white-space: nowrap;
     letter-spacing: -0.04em;
+    line-height: 1; /* line-height 추가 */
 }
 
 .container h1 strong {
@@ -79,7 +95,7 @@ body {
 /* 데스크탑 (769px 이상) */
 @media (min-width: 769px) {
     .container {
-        position: absolute; /* 데스크탑에서는 position: absolute 사용 */
+        position: absolute;
         top: 50%;
         left: 80%;
         transform: translate(-50%, -50%);
@@ -92,7 +108,7 @@ body {
          --font-size: 10vw;
     }
     .container {
-        position: static; /* 명시적으로 static 설정 (Flexbox 적용) */
-        transform: none; /* transform 해제 */
+        position: static;
+        transform: none;
     }
 }
