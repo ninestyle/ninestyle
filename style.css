@@ -43,6 +43,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     font-family: var(--font-family);
 }
 
@@ -50,7 +51,6 @@ body {
     background: linear-gradient(45deg, var(--bg-color1), var(--bg-color2), var(--bg-color3), var(--bg-color4));
     background-size: 300% 300%;
     animation: gradientBG 8s ease infinite;
-    overflow: hidden;
     position: relative;
 }
 
