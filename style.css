@@ -60,7 +60,7 @@ body::before {
     top: 50%;
     left: 5%;
     transform: translate(-15%, -35%);
-    font-size: 120svh;
+    font-size: 120vh;
     font-weight: 400;
     color: var(--bg9-color);
     z-index: 0;
