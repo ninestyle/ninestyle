@@ -111,10 +111,6 @@ body::before {
     :root {
          --font-size: 12vw;
     }
-    body::before {
-        left: 50%;
-        transform: translate(-50%, -30%);
-    }
     .container {
         top: 5vh;
         right: 5vw;
