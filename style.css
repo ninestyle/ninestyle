@@ -59,8 +59,8 @@ body::before {
     position: absolute;
     top: 50%;
     left: 5%;
-    transform: translate(-5%, -30%);
-    font-size: 110vh;
+    transform: translate(-15%, -35%);
+    font-size: 120vh;
     font-weight: 400;
     color: var(--bg9-color);
     z-index: 0;
