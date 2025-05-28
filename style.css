@@ -54,6 +54,12 @@ body {
     position: relative;
 }
 
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 body::before {
     content: '9';
     position: absolute;
@@ -68,12 +74,17 @@ body::before {
     line-height: 1;
     pointer-events: none;
     transition: color 0.5s ease;
+    opacity: 0;
+    animation: fadeIn 2s ease-out 0.5s forwards; 
 }
 
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .container {
