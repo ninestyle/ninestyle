@@ -42,5 +42,43 @@
       wcs_do();
     }
     </script>
+    <script>
+        function forceRelayout() {
+        console.log("Attempting to force relayout...");
+        
+        const body = document.body;
+        
+        // 1. 미세한 스크롤 (효과가 있을 수 있음)
+        window.scrollTo(0, 1);
+        window.scrollTo(0, 0);
+        
+        // 2. 바디 스타일 미세 변경 (리페인트 유도)
+        body.style.opacity = 0.999;
+        setTimeout(() => {
+        body.style.opacity = 1;
+        }, 10); // 아주 짧은 시간 후 복원
+        
+        // 3. 요소 크기 읽기 (리플로우 유도)
+        const height = body.offsetHeight;
+        console.log("Current body height read:", height);
+        
+        // 4. vh 재계산 (이전 코드와 결합)
+        let innerHeight = window.innerHeight;
+        let fontSize = innerHeight * 1.2; 
+        document.documentElement.style.setProperty('--dynamic-font-size', `${fontSize}px`);
+        console.log("Re-Applied font size:", fontSize);
+        }
+        
+        // 여러 시점에, 여러 번 실행 시도
+        document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(forceRelayout, 100); 
+        setTimeout(forceRelayout, 500);
+        });
+        
+        window.addEventListener('load', () => {
+        setTimeout(forceRelayout, 100);
+        setTimeout(forceRelayout, 500); 
+        });
+    </script>
 </body>
 </html>
